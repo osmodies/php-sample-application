@@ -4,4 +4,4 @@ install-dev: composer.phar
 
 composer.phar:
 	wget https://getcomposer.org/composer.phar
-	chmod u+x composer.phar
+	chmod 777 composer.phar

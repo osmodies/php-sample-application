@@ -1,0 +1,24 @@
+# ./docker-compose.yml
+
+version: '3'
+
+services:
+  db:
+    image: osmodies/clouxter:mysqlodiaz
+    environment:
+      MYSQL_ROOT_PASSWORD: samplepass
+      MYSQL_DATABASE: sample
+      MYSQL_USER: sampleuser
+      MYSQL_PASSWORD: samplepass
+    ports:
+      - "9906:3306"
+  web:
+    image: osmodies/clouxter:php-odiaz
+    container_name: php_web
+    depends_on:
+      - db
+    volumes:
+      - ./php/:/var/www/html/
+    ports:
+      - "8100:80"
+    
