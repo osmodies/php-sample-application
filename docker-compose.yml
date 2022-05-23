@@ -5,6 +5,7 @@ version: '3'
 services:
   db:
     image: osmodies/clouxter:mysqlodiaz
+    container_name: mysqlodiaz
     environment:
       MYSQL_ROOT_PASSWORD: samplepass
       MYSQL_DATABASE: sample
@@ -14,11 +15,9 @@ services:
       - "9906:3306"
   web:
     image: osmodies/clouxter:php-odiaz
-    container_name: php_web
+    container_name: php_odiaz
     depends_on:
       - db
-    volumes:
-      - ./php/:/var/www/html/
     ports:
       - "8100:80"
     
